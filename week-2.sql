@@ -11,6 +11,9 @@ ALTER TABLE contactdetails ADD CONSTRAINT pk_contact PRIMARY KEY (contact_id);
 INSERT INTO contactdetails (contact_id, phone_no, email, social_links)
 VALUES (1, '9841079773', 'romankarki2017@gmail.com', 'roman2017fb.com');
 
+SELECT phone_no, email 
+FROM contactdetails 
+WHERE email LIKE 'romankarki@gmail.com';
 
 -- Education
 CREATE TABLE educations (
@@ -26,6 +29,13 @@ ALTER TABLE educations ADD CONSTRAINT pk_education PRIMARY KEY (education_id);
 INSERT INTO educations (education_id, institution, grad_year, GPA, stream)
 VALUES (101, 'Nami', 2028, '4.0', 'Computing');
 
+SELECT * FROM educations 
+WHERE stream = 'Computing';
+
+SELECT institution, grad_year, stream 
+FROM educations 
+ORDER BY grad_year DESC;
+
 
 -- Address
 CREATE TABLE address (
@@ -37,8 +47,16 @@ CREATE TABLE address (
 ALTER TABLE address ADD address_no NUMBER;
 ALTER TABLE address ADD CONSTRAINT pk_address PRIMARY KEY (Address_no);
 
-INSERT INTO Address (address_no, province, district, Ward_no)
+INSERT INTO address (address_no, province, district, Ward_no)
 VALUES (501, 'Bagmati', 'Budhanilkantha', 9);
+
+SELECT * FROM address 
+WHERE district IN ('Budhanilkantha', 'Kathmandu', 'Lalitpur');
+
+SELECT district, province 
+FROM address 
+WHERE district LIKE 'A%' 
+   OR district LIKE 'B%';
 
 
 -- Identity
@@ -67,3 +85,24 @@ ALTER TABLE profession ADD CONSTRAINT pk_profession PRIMARY KEY (profession_id);
 
 INSERT INTO profession (profession_id, position, experience, salary)
 VALUES (1232, 'Software Engineer', 2, 999999.00);
+
+
+SELECT position, salary 
+FROM profession 
+WHERE position = 'Software Engineer' OR salary > 500000;
+
+SELECT * FROM profession 
+WHERE experience >= 2 
+  AND salary > 500000;
+
+
+
+
+
+
+
+
+
+
+
+
