@@ -60,3 +60,21 @@ INSERT INTO students VALUES (
 SELECT surname, contacts FROM students;
 
 SELECT s.surname, c.* FROM students s, TABLE(s.contacts) c;
+
+-- INSERTING INTO OBJECT COLUMNS
+INSERT INTO table_name (column_name, object_column_name)
+VALUES(value, object_type_name('VALUE', 'VALUE', 'VALUE'));
+
+-- example 
+INSERT INTO sites (site_id, address)
+VALUES(3, address_type('22 PARK LANE', 'LONDON', 'UK'));
+
+-- INSERTING INTO OBJECT TABLES
+INSERT INTO table_name(column_name, column_name, column_name)
+VALUES('VALUE', 'VALUE', 'VALUE');
+
+--exmaple
+INSERT INTO addresses(ste=reet, city, country)
+VALUES('11 HIGHWAY', 'Northampton' 'UK');
+
+-- 
