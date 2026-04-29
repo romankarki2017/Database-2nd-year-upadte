@@ -74,7 +74,34 @@ INSERT INTO table_name(column_name, column_name, column_name)
 VALUES('VALUE', 'VALUE', 'VALUE');
 
 --exmaple
-INSERT INTO addresses(ste=reet, city, country)
+INSERT INTO addresses(street, city, country)
 VALUES('11 HIGHWAY', 'Northampton' 'UK');
 
--- 
+-- INSERTING INTO TABLE WITH REFs TO OBJECT TABLES
+INSERT INTO table_name(column_name, column_name, ref_column_name)
+SELECT VALUE, 'VALUE', REF(alias)
+FROM table_name alias
+WHERE object_table_column_name ='VALUE';
+
+--example
+INSERT INTO students(student_id, address)
+SELECT 12345, REF(a)
+FROM addresses a
+WHERE street = '67 KINGSTOMEP AVENEVE' 
+
+--INSERTING A REF USING UPDATE
+INSER INTO instructors(instructors_id) VALUES(123),
+
+UPDATE instructors SET address = (
+    SELECT REF(a)
+    FROM addresses a
+    WHERE a.street = '177 AIRPORT ROAD'
+)
+WHERE instructor_id = 123; 
+
+--INSERT WITH SIMPLE ARRAY 
+INSERT INTO products(product_id, available_size)
+VALUES(1010101, size_carray_type('SMALL', 'MEDUIM', 'LARGE')); 
+
+
+-- Second class
