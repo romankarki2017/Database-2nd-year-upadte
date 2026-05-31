@@ -88,6 +88,44 @@ END;
 
 --FORALL LOOP
 
+-- ANCHORED TYPE
+students.firstname%TYPE
+
+--declaring variable
+DECLARE
+vc_firstname VARCHAR2(30):='ROMAN';
+vc_surename students.surename%TYPE;
+vn_student_id NUMBER(2);
+BEGIN
+
+--structure
+CREATE OR REPLACE PROCEDURE procedure_name
+   [(parameter DATATYPE, parameter DATATYPE)] IS
+   local declarations
+BEGIN
+   Execution statement
+[EXCEPTION
+   Exception handlers]
+END[procedure_name];
+/
+
+--example
+CREATE OR REPLACE PROCEDURE proc_add_subject IS
+vc_subject_name subject_areas.subject_name%TYPE:= 'NEW SUBJECT NAME';
+
+BEGIN
+   INSERT INTO SUBJECT_AREAS
+   VALUES(seq_subject_id:nextval, vc_subject_name);
+
+END proc_add_subject;
+/
+SHOW ERRORS
+
+-- executing procudures
+execute pro_add_subject;
+
+
+
 
 
 
