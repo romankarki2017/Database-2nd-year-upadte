@@ -105,3 +105,16 @@ VALUES(1010101, size_carray_type('SMALL', 'MEDUIM', 'LARGE'));
 
 
 -- Second class
+INSERT INTO invoices
+(invoice_number, company_id, billing_date, invoice_item)
+VALUES(101010, 30, '01-OCT-2021'
+invoice_voice)
+
+--QUERY USING DOT NOTATION
+SELECT alias.column_name.attribute FROM tablename alias;
+SELECT s.address.street, s.address.city FROM sites s;
+
+--VARRAY EXAMPLE
+SELECT s.site_id, c.room_number, c.capacity
+FROM sites s, TABLE(s.classroom)c
+WHERE site_id=1;
